@@ -37,10 +37,10 @@
   </section>
 
   <!-- Эта страница — точка конверсии (Thank You page).
-       В GTM можно ловить её двумя способами:
-       1) Триггер Page View по URL содержащему "thank-you"
-       2) Событие purchase, которое уже отправлено на checkout.html
-       Здесь дополнительно пушим purchase_confirmed для практики. -->
+       Событие purchase отправляется ИМЕННО при загрузке этой страницы —
+       это соответствует стандарту GA4: покупка = факт показа Thank You page.
+       В GTM лови её триггером Custom Event → purchase, либо дополнительно
+       триггером Page View по URL содержащему "thank-you". -->
 
   <footer class="footer">
     <div class="container">
@@ -53,13 +53,16 @@
 
   <script src="tracking.js"></script>
   <script>
-    // Достаём параметры транзакции из URL
-    var params = new URLSearchParams(window.location.search);
-    var txn = params.get('txn');
-    var value = params.get('value');
-    if (txn) {
-      document.getElementById('txn-info').textContent = 'Номер заявки: ' + txn + ' · сумма: ' + Number(value).toLocaleString('ru') + ' ₽';
-      dlPush('purchase_confirmed', { transaction_id: txn, value: Number(value), currency: 'RUB' });
+    // Ключевой момент: purchase отправляется ИМЕННО здесь, при загрузке страницы —
+    // это и есть стандарт GA4 "покупка = факт показа Thank You page".
+    var order = finalizePendingPurchase();
+    if (order) {
+      document.getElementById('txn-info').textContent =
+        'Номер заказа: ' + order.txnId + ' · сумма: ' + Number(order.value).toLocaleString('ru') + ' ₽';
+    } else {
+      // Страница открыта напрямую, без реального оформления заказа —
+      // на боевом сайте лучше в этом случае вообще не слать purchase.
+      document.getElementById('txn-info').textContent = '';
     }
   </script>
 </body>
