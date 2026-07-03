@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты и запрос КП — Политеп</title>
+  <meta name="description" content="Запросите расчёт под объект: DN, класс нагрузки, объём. Ответ за 1 рабочий день. Москва, МКАД 73 км.">
+
+  <!-- ================= GTM HEAD SNIPPET GOES HERE ================= -->
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ================= GTM BODY SNIPPET GOES HERE ================= -->
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-left"><span>📍 Москва, МКАД 73 км</span><span>Ответ за 1 рабочий день</span></div>
+      <div class="topbar-right"><a href="tel:+78120000000">+7 (812) 000-00-00</a></div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">ПОЛИ<span>ТЕП</span></a>
+      <button class="burger" aria-label="Меню">☰</button>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="products.html">Продукция</a>
+        <a href="product.html">Лоток DN150</a>
+        <a href="contact.html" class="active">Контакты</a>
+        <a href="checkout.html" class="nav-cta" data-cta="nav-cart">Заявка (<span data-cart-count>0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="container"><a href="index.html">Главная</a> / Контакты</div>
+  </div>
+
+  <div class="page-header">
+    <div class="container"><h1>Запросить КП под объект</h1><p>Укажите параметры объекта — подберём позиции со склада и посчитаем стоимость системы за погонный метр.</p></div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-blocks">
+        <div class="contact-block">
+          <h4>Телефон</h4>
+          <a href="tel:+78120000000">+7 (812) 000-00-00</a>
+          <p>Пн–Пт 9:00–18:00</p>
+        </div>
+        <div class="contact-block">
+          <h4>Почта</h4>
+          <a href="mailto:info@politep-demo.ru">info@politep-demo.ru</a>
+          <p>Ответ в течение дня</p>
+        </div>
+        <div class="contact-block">
+          <h4>Склад / производство</h4>
+          <a href="https://yandex.ru/maps" class="external-link" target="_blank" rel="noopener">Москва, МКАД 73 км ↗</a>
+          <p>Самовывоз и доставка</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section form-section">
+    <div class="container">
+      <div class="form-grid">
+        <div class="form-info">
+          <h3>Что будет после отправки</h3>
+          <ul>
+            <li><span class="check">✓</span><div><strong>Ответ за 1 рабочий день</strong><span>Подберём DN и класс нагрузки под вашу задачу</span></div></li>
+            <li><span class="check">✓</span><div><strong>Расчёт за погонный метр</strong><span>Не только цена за штуку, а стоимость готовой системы</span></div></li>
+            <li><span class="check">✓</span><div><strong>Сроки под график бригады</strong><span>Доставка на объект за 1–2 дня со склада</span></div></li>
+            <li><span class="check">✓</span><div><strong>Сертификаты для проекта</strong><span>Пакет документов для тендерной / проектной документации</span></div></li>
+          </ul>
+        </div>
+
+        <div class="form-card">
+          <!-- Сообщение об успехе (показывается через JS после отправки) -->
+          <div class="form-success" id="form-success">
+            ✅ Заявка отправлена! Менеджер свяжется с вами в течение 10 минут.
+          </div>
+
+          <!-- ВАЖНО: это НЕ настоящая форма с отправкой на сервер.
+               JS перехватывает submit, пушит generate_lead в dataLayer
+               и показывает сообщение. Для практики отслеживания конверсии-лида. -->
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <label>Вы обращаетесь как <span class="req">*</span></label>
+              <div class="form-radio-group">
+                <label class="form-radio"><input type="radio" name="client_type" value="organization" checked> Организация</label>
+                <label class="form-radio"><input type="radio" name="client_type" value="individual"> Частное лицо</label>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="name">Имя <span class="req">*</span></label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Как к вам обращаться" required>
+            </div>
+            <div class="form-row">
+              <label for="phone">Телефон <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="+7 (___) ___-__-__" required>
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="you@company.ru">
+            </div>
+            <div class="form-row">
+              <label for="object">Параметры объекта</label>
+              <textarea id="object" name="object" class="form-control" placeholder="Например: DN150, класс D400, ~120 п.м., двор ЖК в Ленобласти"></textarea>
+              <p class="form-note">Чем точнее опишете объект — тем точнее расчёт.</p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="form-submit" data-cta="form-submit">Отправить заявку</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;">
+        <span>© 2026 Политеп (демо). Тестовый сайт для обучения аналитике.</span>
+        <a href="index.html">На главную</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="tracking.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('name').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      if (!name || !phone) {
+        showToast('Заполните имя и телефон');
+        return;
+      }
+      // Пушим generate_lead в dataLayer
+      submitLeadForm(this);
+      // Показываем успех, прячем форму
+      document.getElementById('form-success').classList.add('show');
+      this.style.display = 'none';
+      // Меняем URL — чтобы можно было ловить конверсию по Thank You состоянию
+      history.replaceState(null, '', 'contact.html?submitted=true');
+      window.scrollTo({ top: document.getElementById('form-success').offsetTop - 120, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

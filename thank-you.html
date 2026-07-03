@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заявка принята — Политеп</title>
+
+  <!-- ================= GTM HEAD SNIPPET GOES HERE ================= -->
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ================= GTM BODY SNIPPET GOES HERE ================= -->
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">ПОЛИ<span>ТЕП</span></a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="products.html">Продукция</a>
+        <a href="contact.html">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section" style="text-align:center;padding:100px 0;">
+    <div class="container" style="max-width:640px;">
+      <div style="font-size:64px;margin-bottom:20px;">✅</div>
+      <h1 style="font-size:40px;margin-bottom:16px;">Заявка принята</h1>
+      <p style="font-size:19px;color:var(--text-muted);margin-bottom:12px;">
+        Спасибо! Менеджер свяжется с вами в течение 10 минут в рабочее время,
+        пришлёт счёт и уточнит сроки доставки на объект.
+      </p>
+      <p id="txn-info" style="font-size:15px;color:var(--steel);margin-bottom:32px;"></p>
+      <a href="index.html" class="btn btn-primary" data-cta="ty-home">Вернуться на главную</a>
+    </div>
+  </section>
+
+  <!-- Эта страница — точка конверсии (Thank You page).
+       В GTM можно ловить её двумя способами:
+       1) Триггер Page View по URL содержащему "thank-you"
+       2) Событие purchase, которое уже отправлено на checkout.html
+       Здесь дополнительно пушим purchase_confirmed для практики. -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;">
+        <span>© 2026 Политеп (демо). Тестовый сайт для обучения аналитике.</span>
+        <a href="index.html">На главную</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="tracking.js"></script>
+  <script>
+    // Достаём параметры транзакции из URL
+    var params = new URLSearchParams(window.location.search);
+    var txn = params.get('txn');
+    var value = params.get('value');
+    if (txn) {
+      document.getElementById('txn-info').textContent = 'Номер заявки: ' + txn + ' · сумма: ' + Number(value).toLocaleString('ru') + ' ₽';
+      dlPush('purchase_confirmed', { transaction_id: txn, value: Number(value), currency: 'RUB' });
+    }
+  </script>
+</body>
+</html>
