@@ -18,6 +18,7 @@
       <nav class="nav">
         <a href="index.html">Главная</a>
         <a href="products.html">Продукция</a>
+        <a href="forms.html">Заявки</a>
         <a href="contact.html">Контакты</a>
       </nav>
     </div>
@@ -58,7 +59,7 @@
     var order = finalizePendingPurchase();
     if (order) {
       document.getElementById('txn-info').textContent =
-        'Номер заказа: ' + order.txnId + ' · сумма: ' + Number(order.value).toLocaleString('ru') + ' ₽';
+        'Номер заказа: ' + order.txnId + ' · сумма: ' + Number(order.value).toFixed(2) + ' $';
     } else {
       // Страница открыта напрямую, без реального оформления заказа —
       // на боевом сайте лучше в этом случае вообще не слать purchase.

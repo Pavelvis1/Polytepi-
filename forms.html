@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Формы обратной связи — Политеп</title>
+  <meta name="description" content="Оставьте заявку на расчёт водоотвода и плитки под объект, или запишитесь на консультацию инженера.">
+
+  <!-- ================= GTM HEAD SNIPPET GOES HERE ================= -->
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ================= GTM BODY SNIPPET GOES HERE ================= -->
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-left"><span>📍 Москва, МКАД 73 км</span><span>Ответ за 1 рабочий день</span></div>
+      <div class="topbar-right"><a href="tel:+78120000000">+7 (812) 000-00-00</a></div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">ПОЛИ<span>ТЕП</span></a>
+      <button class="burger" aria-label="Меню">☰</button>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="products.html">Продукция</a>
+        <a href="product.html">Лоток DN150</a>
+        <a href="forms.html" class="active">Заявки</a>
+        <a href="contact.html">Контакты</a>
+        <a href="cart.html" class="nav-cta" data-cta="nav-cart">Корзина (<span data-cart-count>0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="container"><a href="index.html">Главная</a> / Заявки</div>
+  </div>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Формы обратной связи</h1>
+      <p>Три способа связаться: быстрая заявка, запись на консультацию инженера или подробный запрос под объект.</p>
+    </div>
+  </div>
+
+  <!-- ===================== ФОРМА 1 — быстрая заявка (без Subject) ===================== -->
+  <section class="section">
+    <div class="container" style="max-width:640px;">
+      <div class="section-eyebrow">Форма 1 · Быстрая заявка</div>
+      <h2 style="font-size:28px;margin-bottom:8px;">Оставить заявку</h2>
+      <p style="color:var(--text-muted);margin-bottom:24px;">Перезвоним в течение рабочего дня и подберём позиции под вашу задачу.</p>
+
+      <form id="quick-lead-form" class="lead-form">
+        <div class="form-row">
+          <label for="q-name">Ваше имя <span class="req">*</span></label>
+          <input type="text" id="q-name" name="name" class="form-control" placeholder="Как к вам обращаться" required>
+        </div>
+        <div class="form-row">
+          <label for="q-email">Email <span class="req">*</span></label>
+          <input type="email" id="q-email" name="email" class="form-control" placeholder="you@company.ru" required>
+        </div>
+        <div class="form-row">
+          <label for="q-message">Сообщение</label>
+          <textarea id="q-message" name="message" class="form-control" placeholder="Коротко о задаче (необязательно)"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" data-cta="quick-form-submit">Отправить заявку</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== БЛОК 2 — Calendly (запись на консультацию) ===================== -->
+  <section class="section section-paper">
+    <div class="container" style="max-width:760px;">
+      <div class="section-eyebrow">Форма 2 · Запись на консультацию</div>
+      <h2 style="font-size:28px;margin-bottom:8px;">Консультация инженера · 30 минут</h2>
+      <p style="color:var(--text-muted);margin-bottom:24px;">Выберите удобное время — обсудим класс нагрузки, DN и смету по объекту. Онлайн, ссылка придёт после записи.</p>
+
+      <!-- ВАЖНО: это заглушка под твой будущий Calendly.
+           Когда заведёшь аккаунт на calendly.com — заменишь блок ниже на их embed-код
+           (Calendly → Share → Add to website → Inline Embed).
+           Пока это визуальная имитация + событие клика для практики трекинга. -->
+      <div id="calendly-placeholder" style="border:1px solid var(--line);background:var(--white);padding:32px;border-top:4px solid var(--safety);text-align:center;">
+        <div style="font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Консультация инженера</div>
+        <div style="color:var(--text-muted);margin-bottom:6px;">⏱ 30 мин · онлайн</div>
+        <div style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">Детали созвона придут после подтверждения</div>
+
+        <!-- Простой выбор дня (имитация календаря Calendly) -->
+        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;">
+          <button class="btn btn-dark calendly-slot" data-slot="Пн 10:00" style="padding:10px 18px;font-size:14px;">Пн 10:00</button>
+          <button class="btn btn-dark calendly-slot" data-slot="Вт 14:00" style="padding:10px 18px;font-size:14px;">Вт 14:00</button>
+          <button class="btn btn-dark calendly-slot" data-slot="Ср 11:30" style="padding:10px 18px;font-size:14px;">Ср 11:30</button>
+          <button class="btn btn-dark calendly-slot" data-slot="Чт 16:00" style="padding:10px 18px;font-size:14px;">Чт 16:00</button>
+          <button class="btn btn-dark calendly-slot" data-slot="Пт 09:00" style="padding:10px 18px;font-size:14px;">Пт 09:00</button>
+        </div>
+        <p style="font-size:12px;color:var(--steel);">Демо-виджет. Замени на свой Calendly embed-код, когда заведёшь аккаунт.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ФОРМА 3 — подробный запрос (с Subject) ===================== -->
+  <section class="section">
+    <div class="container" style="max-width:640px;">
+      <div class="section-eyebrow">Форма 3 · Подробный запрос под объект</div>
+      <h2 style="font-size:28px;margin-bottom:8px;">Запросить КП</h2>
+      <p style="color:var(--text-muted);margin-bottom:24px;">Опишите объект подробно — пришлём расчёт системы за погонный метр с учётом класса нагрузки.</p>
+
+      <form id="detailed-lead-form" class="lead-form">
+        <div class="form-row">
+          <label for="d-name">Ваше имя <span class="req">*</span></label>
+          <input type="text" id="d-name" name="name" class="form-control" placeholder="Как к вам обращаться" required>
+        </div>
+        <div class="form-row">
+          <label for="d-email">Email <span class="req">*</span></label>
+          <input type="email" id="d-email" name="email" class="form-control" placeholder="you@company.ru" required>
+        </div>
+        <div class="form-row">
+          <label for="d-subject">Тема запроса <span class="req">*</span></label>
+          <input type="text" id="d-subject" name="subject" class="form-control" placeholder="Например: водоотвод для двора ЖК, DN150" required>
+        </div>
+        <div class="form-row">
+          <label for="d-message">Параметры объекта</label>
+          <textarea id="d-message" name="message" class="form-control" placeholder="DN, класс нагрузки, объём в п.м., локация"></textarea>
+          <p class="form-note">Чем точнее опишете — тем точнее расчёт.</p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" data-cta="detailed-form-submit">Отправить запрос</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;">
+        <span>© 2026 Политеп (демо). Тестовый сайт для обучения аналитике.</span>
+        <a href="index.html">На главную</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="tracking.js"></script>
+  <script>
+    // ---------- Форма 1: быстрая заявка (generate_lead, form_id = quick-lead-form) ----------
+    document.getElementById('quick-lead-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!this.querySelector('#q-name').value.trim() || !this.querySelector('#q-email').value.trim()) {
+        showToast('Заполните имя и email'); return;
+      }
+      window.location.href = 'thank-you-form.html?form=quick';
+    });
+
+    // ---------- Форма 3: подробный запрос (generate_lead, form_id = detailed-lead-form) ----------
+    document.getElementById('detailed-lead-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var n = this.querySelector('#d-name').value.trim();
+      var em = this.querySelector('#d-email').value.trim();
+      var subj = this.querySelector('#d-subject').value.trim();
+      if (!n || !em || !subj) { showToast('Заполните имя, email и тему'); return; }
+      window.location.href = 'thank-you-form.html?form=detailed';
+    });
+
+    // ---------- Блок 2: Calendly-слоты (schedule_click) ----------
+    document.querySelectorAll('.calendly-slot').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        window.location.href = 'thank-you-form.html?form=calendly&slot=' + encodeURIComponent(btn.dataset.slot);
+      });
+    });
+  </script>
+</body>
+</html>

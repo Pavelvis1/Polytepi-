@@ -19,6 +19,7 @@
       <nav class="nav">
         <a href="index.html">Главная</a>
         <a href="products.html">Продукция</a>
+        <a href="forms.html">Заявки</a>
         <a href="contact.html">Контакты</a>
         <a href="cart.html" class="nav-cta active" data-cta="nav-cart">Корзина (<span data-cart-count>0</span>)</a>
       </nav>
@@ -52,7 +53,7 @@
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;background:var(--white);border:1px solid var(--line);padding:24px;">
           <div>
             <div style="font-size:14px;color:var(--text-muted);">Итого без НДС</div>
-            <div class="product-price" style="font-size:32px;" id="cart-total">0 ₽</div>
+            <div class="product-price" style="font-size:32px;" id="cart-total">0 $</div>
           </div>
           <!-- Клик по этой кнопке = begin_checkout, затем переход на thank-you.html -->
           <button class="btn btn-primary" id="checkout-btn" data-cta="cart-checkout">Оформить заказ →</button>
@@ -96,12 +97,12 @@
         var tr = document.createElement('tr');
         tr.innerHTML = '<td><strong>' + i.item_name + '</strong></td>' +
           '<td>' + i.item_category + '</td>' +
-          '<td>' + i.price.toLocaleString('ru') + ' ₽</td>' +
+          '<td>' + i.price.toLocaleString('ru') + ' $</td>' +
           '<td>' + i.quantity + '</td>' +
-          '<td><strong>' + sum.toLocaleString('ru') + ' ₽</strong></td>';
+          '<td><strong>' + sum.toLocaleString('ru') + ' $</strong></td>';
         rows.appendChild(tr);
       });
-      document.getElementById('cart-total').textContent = total.toLocaleString('ru') + ' ₽';
+      document.getElementById('cart-total').textContent = total.toFixed(2) + ' $';
     }
 
     renderCartPage();
