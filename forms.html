@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-52ZPFXB7');</script>
-<!-- End Google Tag Manager -->
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Формы обратной связи — Политеп</title>
   <meta name="description" content="Оставьте заявку на расчёт водоотвода и плитки под объект, или запишитесь на консультацию инженера.">
- <link rel="stylesheet" href="styles.css">
+
+  <!-- ================= GTM HEAD SNIPPET GOES HERE ================= -->
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52ZPFXB7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- ================= GTM BODY SNIPPET GOES HERE ================= -->
 
   <div class="topbar">
     <div class="container">
@@ -78,6 +68,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <button type="submit" class="btn btn-primary btn-block" data-cta="quick-form-submit">Отправить заявку</button>
       </form>
+
+      <!-- Сообщение появляется ПРЯМО ЗДЕСЬ после отправки (без перехода на другую страницу).
+           Это сценарий для GTM Element Visibility trigger: ловим появление этого блока. -->
+      <div id="quick-form-success" style="display:none;background:var(--success-light);border:1px solid var(--success);border-left:4px solid var(--success);border-radius:8px;padding:20px 24px;margin-top:8px;">
+        <p style="font-size:17px;font-weight:700;color:var(--success);margin-bottom:4px;">✅ Спасибо за заявку!</p>
+        <p style="font-size:14px;color:var(--text);margin:0;">Мы перезвоним в течение рабочего дня.</p>
+      </div>
     </div>
   </section>
 
@@ -151,13 +148,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <script src="tracking.js"></script>
   <script>
-    // ---------- Форма 1: быстрая заявка (generate_lead, form_id = quick-lead-form) ----------
+    // ---------- Форма 1: показывает сообщение НА МЕСТЕ (без перехода) ----------
+    // Сценарий для GTM Element Visibility trigger — трекаем появление блока "спасибо"
     document.getElementById('quick-lead-form').addEventListener('submit', function (e) {
       e.preventDefault();
       if (!this.querySelector('#q-name').value.trim() || !this.querySelector('#q-email').value.trim()) {
         showToast('Заполните имя и email'); return;
       }
-      window.location.href = 'thank-you-form.html?form=quick';
+      // Прячем форму, показываем сообщение прямо здесь
+      this.style.display = 'none';
+      document.getElementById('quick-form-success').style.display = 'block';
     });
 
     // ---------- Форма 3: подробный запрос (generate_lead, form_id = detailed-lead-form) ----------
@@ -167,13 +167,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var em = this.querySelector('#d-email').value.trim();
       var subj = this.querySelector('#d-subject').value.trim();
       if (!n || !em || !subj) { showToast('Заполните имя, email и тему'); return; }
-      window.location.href = 'thank-you-form.html?form=detailed';
+      window.location.href = 'thank-you.html?form=detailed';
     });
 
     // ---------- Блок 2: Calendly-слоты (schedule_click) ----------
     document.querySelectorAll('.calendly-slot').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        window.location.href = 'thank-you-form.html?form=calendly&slot=' + encodeURIComponent(btn.dataset.slot);
+        window.location.href = 'thank-you.html?form=calendly&slot=' + encodeURIComponent(btn.dataset.slot);
       });
     });
   </script>
