@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-52ZPFXB7');</script>
-<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Формы обратной связи — Политеп</title>
   <meta name="description" content="Оставьте заявку на расчёт водоотвода и плитки под объект, или запишитесь на консультацию инженера.">
- <link rel="stylesheet" href="styles.css">
+
+  <!-- ================= GTM HEAD SNIPPET GOES HERE ================= -->
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52ZPFXB7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --><div class="topbar">
+  <!-- ================= GTM BODY SNIPPET GOES HERE ================= -->
+
+  <div class="topbar">
     <div class="container">
       <div class="topbar-left"><span>📍 Москва, МКАД 73 км</span><span>Ответ за 1 рабочий день</span></div>
       <div class="topbar-right"><a href="tel:+78120000000">+7 (812) 000-00-00</a></div>
@@ -94,21 +89,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
            Когда заведёшь аккаунт на calendly.com — заменишь блок ниже на их embed-код
            (Calendly → Share → Add to website → Inline Embed).
            Пока это визуальная имитация + событие клика для практики трекинга. -->
-      <div id="calendly-placeholder" style="border:1px solid var(--line);background:var(--white);padding:32px;border-top:4px solid var(--safety);text-align:center;">
-        <div style="font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Консультация инженера</div>
-        <div style="color:var(--text-muted);margin-bottom:6px;">⏱ 30 мин · онлайн</div>
-        <div style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">Детали созвона придут после подтверждения</div>
-
-        <!-- Простой выбор дня (имитация календаря Calendly) -->
-        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;">
-          <button class="btn btn-dark calendly-slot" data-slot="Пн 10:00" style="padding:10px 18px;font-size:14px;">Пн 10:00</button>
-          <button class="btn btn-dark calendly-slot" data-slot="Вт 14:00" style="padding:10px 18px;font-size:14px;">Вт 14:00</button>
-          <button class="btn btn-dark calendly-slot" data-slot="Ср 11:30" style="padding:10px 18px;font-size:14px;">Ср 11:30</button>
-          <button class="btn btn-dark calendly-slot" data-slot="Чт 16:00" style="padding:10px 18px;font-size:14px;">Чт 16:00</button>
-          <button class="btn btn-dark calendly-slot" data-slot="Пт 09:00" style="padding:10px 18px;font-size:14px;">Пт 09:00</button>
+      <div id="calendly-placeholder" style="border:1px solid var(--line);background:var(--white);padding:32px;border-top:4px solid var(--safety);">
+        <div style="text-align:center;margin-bottom:24px;">
+          <div style="font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;margin-bottom:4px;">Консультация инженера</div>
+          <div style="color:var(--text-muted);font-size:14px;">⏱ 30 мин · онлайн · ссылка придёт на email</div>
         </div>
-        <p style="font-size:12px;color:var(--steel);">Демо-виджет. Замени на свой Calendly embed-код, когда заведёшь аккаунт.</p>
+
+        <!-- ШАГ 1: выбор дня -->
+        <div id="cal-step-1">
+          <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:12px;">Шаг 1 — Выберите день</div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;">
+            <button class="cal-day-btn" data-day="Пн" onclick="calSelectDay(this)">
+              <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">ПН</div>
+              <div style="font-size:18px;font-weight:700;">14</div>
+            </button>
+            <button class="cal-day-btn" data-day="Вт" onclick="calSelectDay(this)">
+              <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">ВТ</div>
+              <div style="font-size:18px;font-weight:700;">15</div>
+            </button>
+            <button class="cal-day-btn" data-day="Ср" onclick="calSelectDay(this)">
+              <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">СР</div>
+              <div style="font-size:18px;font-weight:700;">16</div>
+            </button>
+            <button class="cal-day-btn" data-day="Чт" onclick="calSelectDay(this)">
+              <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">ЧТ</div>
+              <div style="font-size:18px;font-weight:700;">17</div>
+            </button>
+            <button class="cal-day-btn" data-day="Пт" onclick="calSelectDay(this)">
+              <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">ПТ</div>
+              <div style="font-size:18px;font-weight:700;">18</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- ШАГ 2: выбор времени (скрыт до выбора дня) -->
+        <div id="cal-step-2" style="display:none;margin-top:24px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <button onclick="calBack()" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:20px;">←</button>
+            <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);">
+              Шаг 2 — Выберите время · <span id="cal-selected-day"></span>
+            </div>
+          </div>
+          <div id="cal-time-slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;"></div>
+        </div>
+
+        <p style="font-size:11px;color:var(--steel);margin-top:20px;text-align:center;">Демо-виджет. Замени на свой Calendly embed-код, когда заведёшь аккаунт.</p>
       </div>
+
+      <style>
+        .cal-day-btn {
+          border: 1px solid var(--line);
+          background: var(--white);
+          border-radius: 6px;
+          padding: 12px 8px;
+          cursor: pointer;
+          text-align: center;
+          transition: all 0.15s;
+          font-family: 'Inter', sans-serif;
+          color: var(--text);
+        }
+        .cal-day-btn:hover { border-color: var(--safety); background: var(--accent-light, #FEF3E2); }
+        .cal-day-btn.selected { border-color: var(--safety); background: var(--safety); color: var(--graphite); }
+        .cal-time-btn {
+          border: 1px solid var(--line);
+          background: var(--white);
+          border-radius: 6px;
+          padding: 12px;
+          cursor: pointer;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--text);
+          transition: all 0.15s;
+        }
+        .cal-time-btn:hover { border-color: var(--safety); background: var(--accent-light, #FEF3E2); }
+      </style>
     </div>
   </section>
 
@@ -175,12 +230,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.location.href = 'thank-you.html?form=detailed';
     });
 
-    // ---------- Блок 2: Calendly-слоты (schedule_click) ----------
-    document.querySelectorAll('.calendly-slot').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        window.location.href = 'thank-you.html?form=calendly&slot=' + encodeURIComponent(btn.dataset.slot);
+    // ---------- Calendly-виджет: 2 шага (день → время) ----------
+    var calTimes = {
+      'Пн': ['09:00','10:00','11:00','14:00','15:00','16:00'],
+      'Вт': ['09:00','10:30','13:00','14:00','16:30'],
+      'Ср': ['10:00','11:30','13:00','15:00'],
+      'Чт': ['09:30','11:00','14:00','16:00','17:00'],
+      'Пт': ['09:00','10:00','12:00','14:30']
+    };
+    var calSelectedDay = '';
+
+    window.calSelectDay = function(btn) {
+      document.querySelectorAll('.cal-day-btn').forEach(function(b){ b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      calSelectedDay = btn.dataset.day;
+      document.getElementById('cal-selected-day').textContent = btn.querySelector('div:last-child').textContent + ' июля · ' + calSelectedDay;
+      var slots = document.getElementById('cal-time-slots');
+      slots.innerHTML = '';
+      (calTimes[calSelectedDay] || []).forEach(function(t) {
+        var b = document.createElement('button');
+        b.className = 'cal-time-btn calendly-slot';
+        b.dataset.slot = calSelectedDay + ' ' + t;
+        b.textContent = t;
+        b.addEventListener('click', function() {
+          window.location.href = 'thank-you.html?form=calendly&slot=' + encodeURIComponent(calSelectedDay + ' ' + t);
+        });
+        slots.appendChild(b);
       });
-    });
+      document.getElementById('cal-step-1').style.display = 'none';
+      document.getElementById('cal-step-2').style.display = 'block';
+    };
+
+    window.calBack = function() {
+      document.getElementById('cal-step-2').style.display = 'none';
+      document.getElementById('cal-step-1').style.display = 'block';
+    };
   </script>
 </body>
 </html>
